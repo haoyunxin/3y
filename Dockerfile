@@ -27,6 +27,5 @@ RUN curl -sS https://getcomposer.org/installer | php && \
 	composer config -g repo.packagist composer https://mirrors.aliyun.com/composer/
 
 EXPOSE 5454 6464 9000
-CMD ["top"]
 VOLUME /var/www
 WORKDIR /var/www
