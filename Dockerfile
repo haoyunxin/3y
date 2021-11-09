@@ -1,4 +1,4 @@
-FROM php:7.3.28-fpm-alpine3.13
+FROM php:7.4.25-fpm-alpine
 RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories && \
     apk update && \
     apk add --no-cache \
@@ -12,7 +12,8 @@ RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories
     pecl install amqp && \
     pecl install mongodb && \
     pecl install swoole && \
-    docker-php-ext-enable redis amqp mongodb swoole opcache && \
+    pecl install xdebug && \
+    docker-php-ext-enable redis amqp mongodb swoole xdebug opcache && \
     pecl install event
 COPY ./event.ini /usr/local/etc/php/conf.d/
 
