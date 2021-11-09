@@ -5,7 +5,7 @@ RUN apk update && apk add tzdata && cp /usr/share/zoneinfo/Asia/Shanghai /etc/lo
 RUN echo "Asia/Shanghai" > /etc/timezone
 RUN update-ca-certificates
 RUN apk del tzdata
-RUN docker-php-ext-configure gd --with-jpeg-dir=/usr/lib --with-freetype-dir=/usr/include/freetype2
+RUN docker-php-ext-configure gd --with-jpeg-dir=/usr/include/ --with-freetype-dir=/usr/include/
 RUN docker-php-ext-install gd sockets pcntl pdo_mysql mysqli gmp zip bcmath
 RUN pecl install redis && \
     pecl install amqp && \
