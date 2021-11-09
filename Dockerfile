@@ -1,14 +1,9 @@
 FROM php:7.4.25-fpm-alpine
 RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories && \
     apk update && \
-    apk add --no-cache \
-    autoconf \
-    build-base \
-    libevent-dev \
-    rabbitmq-c-dev \
-    openssl-dev && \
+	apk add zip libzip-dev libpng-dev autoconf build-base libevent-dev gcc libc-dev libjpeg-turbo-dev jpeg-dev freetype-dev make g++ rabbitmq-c-dev libsodium-dev libmcrypt-dev gmp-dev libmemcached-dev ca-certificates openssl-dev --no-cache && \
 	docker-php-ext-configure gd --with-jpeg-dir=/usr/lib --with-freetype-dir=/usr/include/freetype2 && \
-    docker-php-ext-install gd sockets pcntl pdo_mysql bcmath && \
+    docker-php-ext-install gd sockets pcntl pdo_mysql mysqli gmp zip bcmath && \
     pecl install redis && \
     pecl install amqp && \
     pecl install mongodb && \
