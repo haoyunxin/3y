@@ -7,7 +7,8 @@ RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories
     libevent-dev \
     rabbitmq-c-dev \
     openssl-dev && \
-    docker-php-ext-install sockets pcntl pdo_mysql bcmath && \
+	docker-php-ext-configure gd --with-jpeg-dir=/usr/lib --with-freetype-dir=/usr/include/freetype2 && \
+    docker-php-ext-install gd sockets pcntl pdo_mysql bcmath && \
     pecl install redis && \
     pecl install amqp && \
     pecl install mongodb && \
