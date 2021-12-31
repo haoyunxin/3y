@@ -1,4 +1,4 @@
-FROM php:7.4.25-fpm-alpine
+FROM php:7.4.27-fpm-alpine
 RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories && \
     apk add zip libzip-dev libpng-dev autoconf build-base libevent-dev gcc libc-dev libwebp-dev libjpeg-turbo-dev jpeg-dev freetype-dev make g++ rabbitmq-c-dev libsodium-dev libmcrypt-dev gmp-dev libmemcached-dev ca-certificates openssl-dev --no-cache && \
     apk update && apk add tzdata && cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && \
@@ -26,6 +26,5 @@ RUN curl -sS https://getcomposer.org/installer | php && \
 	mv ./composer.phar /usr/bin/composer && \
 	composer config -g repo.packagist composer https://mirrors.aliyun.com/composer/
 
-EXPOSE 5454 6464 9000
 VOLUME /var/www
 WORKDIR /var/www
