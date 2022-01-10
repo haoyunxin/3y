@@ -11,8 +11,7 @@ RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories
     pecl install amqp && \
     pecl install mongodb && \
     pecl install swoole && \
-    pecl install xdebug && \
-    docker-php-ext-enable redis amqp mongodb swoole xdebug opcache && \
+    docker-php-ext-enable redis amqp mongodb swoole opcache && \
     pecl install event
 COPY ./event.ini /usr/local/etc/php/conf.d/
 
