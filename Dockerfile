@@ -10,10 +10,8 @@ RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories
     pecl install redis && \
     pecl install amqp && \
     pecl install mongodb && \
-    pecl install swoole && \
-    docker-php-ext-enable redis amqp mongodb swoole opcache && \
-    pecl install event
-COPY ./event.ini /usr/local/etc/php/conf.d/
+    pecl install event && \
+    docker-php-ext-enable redis amqp mongodb event opcache
 
 RUN apk add --no-cache \
     libuuid \
